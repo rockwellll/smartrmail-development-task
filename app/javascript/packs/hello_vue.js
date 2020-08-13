@@ -46,12 +46,17 @@ import Vuex from "vuex";
 import TurbolinksAdapter from 'vue-turbolinks'
 import EventView  from "../EventView";
 import SingleEvent from "../SingleEvent";
+import Modal from "../Modal";
+import NewEvent from "../NewEvent";
+
 
 Vue.use(TurbolinksAdapter)
 Vue.use(Vuex);
 
 Vue.component('event-vue', EventView);
 Vue.component('single-event', SingleEvent);
+Vue.component('modal', Modal);
+Vue.component('new-event', NewEvent);
 
 document.addEventListener('turbolinks:load', () => {
   const app = new Vue({
