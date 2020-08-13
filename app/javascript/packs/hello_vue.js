@@ -44,8 +44,14 @@
 import Vue from 'vue/dist/vue.js';
 import Vuex from "vuex";
 import TurbolinksAdapter from 'vue-turbolinks'
+import EventView  from "../EventView";
+import SingleEvent from "../SingleEvent";
+
 Vue.use(TurbolinksAdapter)
 Vue.use(Vuex);
+
+Vue.component('event-vue', EventView);
+Vue.component('single-event', SingleEvent);
 
 document.addEventListener('turbolinks:load', () => {
   const app = new Vue({
