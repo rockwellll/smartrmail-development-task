@@ -46,12 +46,12 @@ import Vue from 'vue/dist/vue.js';
 import App from '../app.vue'
 import Test from '../test.vue'
 import CustomButton from '../custombutton.vue'
-import NavLink from '../components/nav-link.vue';
-
+import CreateEventForm from '../CreateEventForm.vue'
 Vue.use(TurbolinksAdapter)
 
 Vue.component('test', Test);
 Vue.component('custombutton', CustomButton);
+Vue.component('create-event-form', CreateEventForm);
 
 document.addEventListener('turbolinks:load', () => {
   const app = new Vue({

@@ -10,11 +10,26 @@
     <%= javascript_pack_tag 'hello_vue' %>
   </head>
 
-  <body>
-    <section class="container px-10" data-behaviour="vue">
+  <body >
+  <section data-behaviour="vue" class="w-full">
+    <header class="w-full bg-blue-700 ">
+      <nav class="w-full flex justify-end pr-5 p-5">
+        <ul class="flex">
+          <li class="mx-2 p-2 hover:bg-white rounded rounded-sm">
+            <a href="<%= events_path %>">Events</a>
+          </li>
+          <li class="mx-2 p-2 hover:bg-white rounded rounded-sm">
+            <a href="<%= new_event_path %>">Create Events</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="px-10 items-center w-full" >
       <%= yield %>
     </section>
 
+  </section>
   </body>
 </html>
 <script>
