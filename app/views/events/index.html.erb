@@ -27,7 +27,23 @@
 
 <br>
 
-<div class="w-full flex flex-wrap">
+<div class="w-full flex flex-wrap flex-col">
+
+  <new-event class="self-end">
+    <%= render 'form', event: @new_event %>
+  </new-event>
+
+  <form class="text-black" action="">
+    <label for="start_date">From</label>
+    <input type="date" name="start_date">
+
+    <label for="end_date">to</label>
+    <input type="date" name="end_date">
+
+    <span>2020</span>
+
+    <button>Get</button>
+  </form>
 
   <%= month_calendar partial: 'simple_calendar/calendar', events: @events, attribute: :begins_at do |date, events| %>
     <div class="flex justify-center items-center text-gray-600 flex-col" style="height: 100px; ">
@@ -46,7 +62,4 @@
     </div>
   <% end %>
 </div>
-
-
-<%= link_to 'New Event', new_event_path %>
 
