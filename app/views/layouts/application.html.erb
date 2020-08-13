@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SmartmailDevelopmentTask</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'hello_vue' %>
+  </head>
+
+  <body>
+    <section class="container px-10" data-behaviour="vue">
+      <%= yield %>
+    </section>
+
+  </body>
+</html>
+<script>
+
+</script>
