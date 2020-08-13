@@ -41,17 +41,11 @@
 //
 // Then uncomment the code block below:
 
-import TurbolinksAdapter from 'vue-turbolinks'
 import Vue from 'vue/dist/vue.js';
-import App from '../app.vue'
-import Test from '../test.vue'
-import CustomButton from '../custombutton.vue'
-import CreateEventForm from '../CreateEventForm.vue'
+import Vuex from "vuex";
+import TurbolinksAdapter from 'vue-turbolinks'
 Vue.use(TurbolinksAdapter)
-
-Vue.component('test', Test);
-Vue.component('custombutton', CustomButton);
-Vue.component('create-event-form', CreateEventForm);
+Vue.use(Vuex);
 
 document.addEventListener('turbolinks:load', () => {
   const app = new Vue({
