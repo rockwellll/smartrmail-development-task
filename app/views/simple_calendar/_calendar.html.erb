@@ -18,8 +18,8 @@
       <% date_range.each_slice(7) do |week| %>
         <%= content_tag :tr, class: calendar.tr_classes_for(week) do %>
           <% week.each do |day| %>
-            <%= content_tag :td, class: "border p-8 h-8" do %>
-            <h1 class="text-bold"><%= t('date.day_names')[day.wday] %></h1>
+            <%= content_tag :td, class: "border p-1" do %>
+            <span class="text-bold text-sm mb-3"><%= t('date.day_names')[day.wday] %></span>
               <% if defined?(Haml) && respond_to?(:block_is_haml?) && block_is_haml?(passed_block) %>
                 <% capture_haml(day, sorted_events.fetch(day, []), &passed_block) %>
               <% else %>
