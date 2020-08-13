@@ -28,22 +28,25 @@
 <br>
 
 <div class="w-full flex flex-wrap">
-  <% 4.downto 0 do %>
 
-    <% Date::DAYNAMES.each do |day| %>
-      <div class="w-1/6 border border-gray-500 text-center px-4">
-        <h1><%= day %></h1>
-        <div class="flex justify-center w-full text-gray-700">
-          <h1><%= day.to_date.mday.ordinalize %></h1>
-          <h1 class="mx-1"><%= Date::MONTHNAMES[day.to_date.month] %></h1>
-        </div>
+  <%= month_calendar partial: 'simple_calendar/calendar', events: @events, attribute: :begins_at do |date, events| %>
+    <div class="flex justify-center items-center text-gray-600 flex-col" style="height: 100px; ">
+      <div class="flex-1 flex flex-row">
+        <h1>
+          <%= date.mday.ordinalize %>
+        </h1>
+        <h2 class="mx-2 ">
+          <%= Date::MONTHNAMES[date.month] %>
+        </h2>
       </div>
-    <% end %>
-
+      <event-vue
+        :month="<%= Date::MONTHNAMES[date.month].to_json %>"
+        :events="<%= events.to_json %>"
+      ></event-vue>
+    </div>
   <% end %>
-
 </div>
 
 
-
 <%= link_to 'New Event', new_event_path %>
+
