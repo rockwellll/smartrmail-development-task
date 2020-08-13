@@ -1,17 +1,16 @@
 <template>
   <div>
     <div>
-      <div class="rounded rounded-sm bg-blue-600 text-white p-4 self-center">
+      <div v-if="events.length > 0" class="rounded rounded-sm bg-blue-600 text-white p-4 self-center">
         <span class="text-xs">{{events[0].name}}</span>
       </div>
 
       <button v-if="events.length" class="text-sm" @click="showModal= !showModal">View More</button>
     </div>
 
-      <modal v-bind:showModal="showModal" :showModal="showModal" v-on:close="showModal= !showModal">
-          <single-event v-for="e in events" :event="e"></single-event>
-      </modal>
-
+    <modal v-bind:showModal="showModal" :showModal="showModal" v-on:close="showModal= !showModal">
+      <single-event v-for="e in events" :event="e"></single-event>
+    </modal>
   </div>
 </template>
 
@@ -26,7 +25,4 @@ export default {
 </script>
 
 <style scoped>
-.modal {
-  background-color: rgba(0, 0, 0, 0.5);
-}
 </style>
