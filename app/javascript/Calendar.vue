@@ -1,17 +1,19 @@
 <template>
     <div>
-        <slot></slot>
+        <h1>you have {{events.length}} items</h1>
+      <slot></slot>
     </div>
 </template>
 
 <script>
     import { mapMutations, mapState } from "vuex";
-    import events from "./store/events-store";
-    console.log()
 
     export default {
         name: "Calendar",
-        props: ['initial-events'],
+        data: () =>({
+            weekdays: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        }),
+        props: ['initial-events', "weeks"],
         computed: {
             ...mapState(['events'])
         },
