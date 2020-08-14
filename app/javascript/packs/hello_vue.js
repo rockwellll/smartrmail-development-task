@@ -45,22 +45,26 @@ import Vue from 'vue/dist/vue.js';
 import Vuex from "vuex";
 import TurbolinksAdapter from 'vue-turbolinks'
 import EventView  from "../EventView";
-import SingleEvent from "../SingleEvent";
 import Modal from "../Modal";
 import NewEvent from "../NewEvent";
+import { mainStore } from "../store/config";
+import Calendar from "../Calendar";
 
 
 Vue.use(TurbolinksAdapter)
 Vue.use(Vuex);
 
-Vue.component('event-vue', EventView);
-Vue.component('single-event', SingleEvent);
+Vue.component('event', EventView);
 Vue.component('modal', Modal);
 Vue.component('new-event', NewEvent);
+Vue.component('calendar', Calendar);
 
 document.addEventListener('turbolinks:load', () => {
+  // Vue.http.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[nam="csrf-token"').getAttribute('content');
+
   const app = new Vue({
     el: '[data-behaviour="vue"]',
+    store: mainStore
   })
 })
 
