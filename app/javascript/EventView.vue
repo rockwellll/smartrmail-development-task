@@ -5,7 +5,7 @@
         <span class="text-xs">{{events[0].name}}</span>
       </div>
 
-      <button v-if="events.length" class="text-sm" @click="showModal= !showModal">View More</button>
+      <button v-if="events.length > 1" class="text-sm" @click="showModal= !showModal">View More</button>
     </div>
 
     <modal v-bind:showModal="showModal" :showModal="showModal" v-on:close="showModal= !showModal">
