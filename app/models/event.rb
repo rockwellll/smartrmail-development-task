@@ -6,9 +6,10 @@ class Event < ApplicationRecord
   def with_formatted_dates
     {
       name: name,
-        description: description,
-        begins_at: "#{begins_at.month }/ #{begins_at.day}",
-        ends_at: "#{ends_at.month }/ #{ends_at.day}"
+      description: description,
+      begins_at: "#{begins_at.month }/ #{begins_at.day}",
+      ends_at: "#{ends_at.month }/ #{ends_at.day}",
+      id: id
     }
   end
 end
