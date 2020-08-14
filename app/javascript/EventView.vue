@@ -3,8 +3,8 @@
       <div class="rounded rounded-sm bg-blue-600 text-white p-4 self-center text-xs text-left text-white">
         <span>{{event.name}}</span>
         <div class="flex flex-col">
-          <span>Starts At: {{event.begins_at}}</span>
-          <span>Ends At: {{event.ends_at}}</span>
+          <span>Starts At: {{event.begins_at.split("T")[0]}}</span>
+          <span>Ends At: {{event.ends_at.split("T")[0]}}</span>
 
           <p>{{event.description}}</p>
         </div>
@@ -16,11 +16,5 @@
 export default {
   name: "EventView",
   props: ["event"],
-  data: () => ({
-    showModal: false,
-  }),
 };
 </script>
-
-<style scoped>
-</style>
