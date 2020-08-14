@@ -1,23 +1,21 @@
 <template>
-  <div>
-    <div>
-      <div v-if="events.length > 0" class="rounded rounded-sm bg-blue-600 text-white p-4 self-center">
-        <span class="text-xs">{{events[0].name}}</span>
+  <div class="my-2 self-center w-2/3">
+      <div class="rounded rounded-sm bg-blue-600 text-white p-4 self-center text-xs text-left text-white">
+        <span>{{event.name}}</span>
+        <div class="flex flex-col">
+          <span>Starts At: {{event.begins_at}}</span>
+          <span>Ends At: {{event.ends_at}}</span>
+
+          <p>{{event.description}}</p>
+        </div>
       </div>
-
-      <button v-if="events.length > 1" class="text-sm" @click="showModal= !showModal">View More</button>
-    </div>
-
-    <modal v-bind:showModal="showModal" :showModal="showModal" v-on:close="showModal= !showModal">
-      <single-event v-for="e in events" :event="e"></single-event>
-    </modal>
   </div>
 </template>
 
 <script>
 export default {
   name: "EventView",
-  props: ["events", "day", "month"],
+  props: ["event"],
   data: () => ({
     showModal: false,
   }),
