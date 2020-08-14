@@ -1,4 +1,4 @@
-<div class="simple-calendar">
+<div class="w-full">
   <div class="calendar-heading">
     <%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view %>
     <% if calendar.number_of_weeks == 1 %>
@@ -9,11 +9,22 @@
         <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view %>
   </div>
 
-  <table class="table table-striped">
+  <table class="w-full text-center">
     <thead>
       <tr>
         <% date_range.slice(0, 7).each do |day| %>
-          <th><%= t('date.abbr_day_names')[day.wday] %></th>
+          <th class="text-bold border">
+            <%= t('date.abbr_day_names')[day.wday] %>
+            <div class="flex-1 flex flex-row text-gray-600 justify-center">
+              <h1>
+                <%= day.mday.ordinalize %>
+              </h1>
+              <h2 class="mx-2 ">
+                <%= Date::MONTHNAMES[day.month] %>
+              </h2>
+            </div>
+          </th>
+
         <% end %>
       </tr>
     </thead>
