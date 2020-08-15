@@ -72,6 +72,8 @@
 
 <script>
 import { mapMutations } from "vuex";
+import axios from "axios";
+
 export default {
   name: "NewEvent",
   data: () => ({
@@ -104,19 +106,11 @@ export default {
       this.didSubmit = true;
       if (this.notValidInputs()) return;
 
-      fetch("/events.json", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          event: {
-            name: this.name,
-            description: this.description,
-            begins_at: this.begins_at,
-            ends_at: this.ends_at,
-          },
-        }),
+      axios.post("/events.json", {
+        name: this.name,
+        description: this.description,
+        begins_at: this.begins_at,
+        ends_at: this.ends_at,
       })
         .then(() => {
           this.addEvent({
