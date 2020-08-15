@@ -3,3 +3,69 @@
 @import "tailwindcss/components";
 
 @import "tailwindcss/utilities";
+
+.color-primary {
+    color: #8382f5;
+}
+
+.bg-secondary {
+    background-color: #D7D6F1;
+}
+
+.bg-secondary:hover {
+    background-color: #9795F8;
+}
+
+.border-primary {
+    border-color: #9795F8;
+}
+
+.bg-primary {
+    background-color: #8382f5;
+}
+
+.bg-primary:hover {
+    background-color: #9795F8;
+}
+
+.bg-primary-outline {
+    border-color: #9795F8;
+}
+
+
+.bg-primary-outline:hover{
+    background-color: #8382f5;
+    color: white;
+}
+
+
+.color-secondary {
+    color: #736EFF;
+}
+
+.color-tertiary {
+    color: #D7D6F1;
+}
+
+table { border-collapse: revert;  border-spacing: 0 10px; }
+
+th:first-child {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+th:last-child {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+
+.link {
+    text-decoration-color: #D7D6F1;
+    text-underline-color: #D7D6F1;
+    text-decoration: underline;
+}
+
+.link:hover {
+    color: #736EFF;
+}
