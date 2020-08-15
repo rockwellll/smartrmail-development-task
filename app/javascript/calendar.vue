@@ -14,7 +14,7 @@
           >
             <h1 class="color-primary">{{day}}</h1>
             <div class="flex-1 flex flex-row color-tertiary justify-center font-light">
-              <h1>{{calculateDayNumberFor(firstDayOfWeek+index)}}</h1>
+              <h1>{{ordinalize(firstDayOfWeek+index)}}</h1>
               <h2 class="mx-2">{{month}}</h2>
             </div>
           </th>
@@ -62,7 +62,7 @@ export default {
   },
   methods: {
     ...mapMutations(["setEvents"]),
-    calculateDayNumberFor(dayNumber) {
+    ordinalize(dayNumber) {
       let suffix = "th";
       const number = dayNumber.toString();
 
