@@ -16,8 +16,8 @@ const mutations = {
     setEvents: (state, payload) => {
         state.events = payload;
     },
-    addEvent: (state, payload) => {
-        state.events = [payload, ...state.events];
+    addEvent(state, payload) {
+        state.events = [payload, ...state.events]
     },
 }
 
