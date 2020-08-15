@@ -12,7 +12,9 @@ class Event < ApplicationRecord
       description: description,
       begins_at: "#{begins_at.month}/#{begins_at.day}",
       ends_at: "#{ends_at.month}/#{ends_at.day}",
-      id: id
+      id: id,
+      users: users.nil? ? "" : users.split(','),
+      location: location,
     }
   end
 end
