@@ -1,21 +1,32 @@
-<div class="w-full">
-  <div class="calendar-heading">
-    <%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view %>
+<div class="w-full flex flex-col justify-center">
+  <div class="calendar-heading flex w-3/12 justify-around items-center self-center">
+    <div class="p-2 text-sm">
+      <a href="<%= calendar.url_for_previous_view %>" class="link">
+        Previous week
+      </a>
+    </div>
     <% if calendar.number_of_weeks == 1 %>
-      <span class="calendar-title">Week <%= calendar.week_number %></span>
+      <span class="text-md self-center" style="color: #A690D1">Week <%= calendar.week_number %></span>
     <%else%>
         <span class="calendar-title">Week <%= calendar.week_number %> - <%= calendar.end_week %></span>
     <%end%>
-        <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view %>
+
+    <div class="p-2 text-sm">
+      <a href="<%= calendar.url_for_previous_view %>" class="link">
+        Next week
+      </a>
+    </div>
   </div>
 
   <table class="w-full text-center">
     <thead>
       <tr>
         <% date_range.slice(0, 7).each do |day| %>
-          <th class="text-bold border">
-            <%= t('date.abbr_day_names')[day.wday] %>
-            <div class="flex-1 flex flex-row text-gray-600 justify-center">
+          <th class="py-1 border w-1/12" style="border-color: #D7D6F1">
+            <h1 class="color-primary">
+              <%= t('date.day_names')[day.wday] %>
+            </h1>
+            <div class="flex-1 flex flex-row color-tertiary justify-center font-light">
               <h1>
                 <%= day.mday.ordinalize %>
               </h1>
@@ -28,21 +39,5 @@
         <% end %>
       </tr>
     </thead>
-
-    <tbody>
-      <% date_range.each_slice(7) do |week| %>
-        <tr>
-          <% week.each do |day| %>
-            <%= content_tag :td, class: calendar.td_classes_for(day) do %>
-              <% if defined?(Haml) && respond_to?(:block_is_haml?) && block_is_haml?(passed_block) %>
-                <% capture_haml(day, sorted_events.fetch(day, []), &passed_block) %>
-              <% else %>
-                <% passed_block.call day, sorted_events.fetch(day, []) %>
-              <% end %>
-            <% end %>
-          <% end %>
-        </tr>
-      <% end %>
-    </tbody>
   </table>
 </div>
