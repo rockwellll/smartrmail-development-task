@@ -10,6 +10,10 @@
 
         <p>{{event.description.substring(0, 10)}}...</p>
       </div>
+
+      <button>
+        view more
+      </button>
     </div>
   </div>
 </template>
