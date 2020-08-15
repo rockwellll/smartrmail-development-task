@@ -16,7 +16,8 @@
     <modal
       style="min-height: 200px"
       classes="p-5 relative rounded-lg"
-      :name="event.id.toString().concat('event_modal')"
+      height="auto"
+      :name="index.toString().concat('event_modal')"
     >
       <div class="flex flex-col h-full">
         <close-icon-button v-on:click="hideModal" class="absolute top-0" />
@@ -24,9 +25,28 @@
         <div class="text-left w-full h-full flex flex-col justify-center">
           <span class="uppercase text-bold color-primary text-lg">{{event.name}}</span>
           <div class="flex flex-col mt-4">
-            <span>from {{event.begins_at.split("T")[0]}} to {{event.ends_at.split("T")[0]}}</span>
+            <div class="flex justify-between items-center">
+              <span>from {{event.begins_at.split("T")[0]}} to {{event.ends_at.split("T")[0]}}</span>
+
+              <span>{{event.location}}</span>
+            </div>
 
             <p class="mt-2">{{event.description}}</p>
+          </div>
+
+          <h2>People who are going</h2>
+          <div class="w-full flex mt-2">
+            <div
+              class="mx-2"
+              v-for="user in event.users"
+              style="width: 40px; height: 40px; border-radius: 20px"
+            >
+              <img
+                src="https://robohash.org/mohammed@foo.bar?set=set4&bgset=&size=400x400"
+                alt
+                :title="user"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -37,13 +57,13 @@
 <script>
 export default {
   name: "EventView",
-  props: ["event"],
+  props: ["event", "index"],
   methods: {
     showModal() {
-      this.$modal.show(this.$props.event.id.toString().concat("event_modal"));
+      this.$modal.show(this.$props.index.toString().concat("event_modal"));
     },
     hideModal() {
-      this.$modal.hide(this.$props.event.id.toString().concat("event_modal"));
+      this.$modal.hide(this.$props.index.toString().concat("event_modal"));
     },
   },
 };
