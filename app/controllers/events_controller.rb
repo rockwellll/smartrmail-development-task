@@ -5,7 +5,11 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     @events = Event.all
-    @new_event = Event.new
+    @cweek = Date.current.cweek
+
+    unless (date = request.query_parameters["start_date"].nil?)
+      @cweek = date.to_datetime.cweek
+    end
   end
 
   # POST /events
