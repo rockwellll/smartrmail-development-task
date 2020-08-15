@@ -49,6 +49,7 @@ import VModal from 'vue-js-modal'
 import Event  from "../event";
 import NewEvent from "../new_event_form";
 import Calendar from "../calendar";
+import CloseIconButton from "../close_icon_button";
 
 import events from "../store/events_store";
 
@@ -60,6 +61,7 @@ Vue.use(VModal);
 Vue.component('event', Event);
 Vue.component('new-event-form', NewEvent);
 Vue.component('calendar', Calendar);
+Vue.component('close-icon-button', CloseIconButton);
 
 const mainStore = new Vuex.Store({
   modules: {
