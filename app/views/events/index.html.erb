@@ -1,13 +1,17 @@
 <div class="w-full flex flex-wrap flex-col">
 
-  <new-event-form class="self-end my-3">
+  <new-event-form
+    :min-date-for-events="<%=  Date.current.strftime("%F").to_json %>"
+    class="self-end my-3">
   </new-event-form>
 
   <%= render 'events/change_weeks_links' %>
 
-  <calendar :week-number="<%= @this_week.cweek %>" :initial-events="<%= @events.map { |event| event.with_formatted_dates }.to_json %>">
-    <%= week_calendar events: @events, attribute: :begins_at do |date, events| %>
-    <% end %>
+  <calendar
+    :month="<%= Date::MONTHNAMES[@this_week.month].to_json %>"
+    :first-day-of-week="<%= @this_week.day.to_json %>"
+    :week-number="<%= @this_week.cweek %>"
+    :initial-events="<%= @events.map { |event| event.with_formatted_dates }.to_json %>">
   </calendar>
 </div>
 
