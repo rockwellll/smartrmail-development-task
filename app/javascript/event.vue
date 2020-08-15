@@ -37,7 +37,7 @@
           <h2 v-if="event.users.length > 0">People who are going</h2>
           <div class="w-full flex mt-2 attendances-container">
             <div
-              class="border-2 flex justify-center items-center p-2 hover:border-indigo-500"
+              class="border-2 flex justify-center items-center p-2 hover:border-indigo-500 bg-white"
               v-for="user in event.users"
               style="width: 60px; height: 60px; border-radius: 30px; "
             >
@@ -69,11 +69,8 @@ export default {
 </script>
 
 <style scoped>
-.attendances-container div {
+.attendances-container div:not(:first-child) {
   margin-left: -10px;
 }
 
-.attendances-container:first-child {
-  margin-left: 0px;
-}
 </style>
