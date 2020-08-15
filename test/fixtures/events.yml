@@ -3,11 +3,13 @@
 one:
   name: MyString
   begins_at: 2020-08-13 04:03:01
-  ends_at: MyString
-  datetime: MyString
+  ends_at: 2020-08-20 04:03:01
+  location: Erbil
+  users: Ahmed,Mohameed
 
 two:
   name: MyString
   begins_at: 2020-08-13 04:03:01
-  ends_at: MyString
-  datetime: MyString
+  ends_at: 2020-08-17 04:03:01
+  location: erbil
+  users: Ahmed, John, Doe
