@@ -130,9 +130,9 @@ export default {
 
     notValidInputs() {
       return (
-        this.name.length === 0 &&
-        this.description.length === 0 &&
-        this.begins_at.length === 0 &&
+        this.name.length === 0 ||
+        this.description.length === 0 ||
+        this.begins_at.length === 0 ||
         this.ends_at.length === 0
       );
     },
@@ -163,9 +163,5 @@ export default {
 <style scoped>
   ::placeholder {
     color: #D7D6F1;
-  }
-
-  input[type="date"]::placeholder {
-    color: red;
   }
 </style>
