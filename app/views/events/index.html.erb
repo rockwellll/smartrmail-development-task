@@ -1,29 +1,10 @@
 <div class="w-full flex flex-wrap flex-col">
 
-  <new-event class="self-end my-3">
-  </new-event>
+  <new-event-form class="self-end my-3">
+  </new-event-form>
 
-  <form class="text-black" action="/events?">
-    <label for="start_date">From</label>
-    <input type="date" name="start_date">
-
-    <label for="end_date">to</label>
-    <input type="date" name="end_date">
-
-    <span>2020</span>
-
-    <button>Get</button>
-  </form>
-
-  <calendar :month="<%= Date.current.month.to_json %>" :initial-events="<%= @events.to_json %>">
+  <calendar :week-number="<%= @cweek %>" :initial-events="<%= @events.map { |event| event.with_formatted_dates }.to_json %>">
     <%= week_calendar events: @events, attribute: :begins_at do |date, events| %>
-      <% events.each do |event| %>
-        <div class="flex justify-center items-center text-gray-600 flex-col my-3" style="height: 100px;">
-          <event
-            :event="<%= event.with_formatted_dates.to_json %>"
-          ></event>
-        </div>
-      <% end %>
     <% end %>
   </calendar>
 </div>
