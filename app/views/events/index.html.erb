@@ -3,7 +3,9 @@
   <new-event-form class="self-end my-3">
   </new-event-form>
 
-  <calendar :week-number="<%= @cweek %>" :initial-events="<%= @events.map { |event| event.with_formatted_dates }.to_json %>">
+  <%= render 'events/change_weeks_links' %>
+
+  <calendar :week-number="<%= @this_week.cweek %>" :initial-events="<%= @events.map { |event| event.with_formatted_dates }.to_json %>">
     <%= week_calendar events: @events, attribute: :begins_at do |date, events| %>
     <% end %>
   </calendar>
