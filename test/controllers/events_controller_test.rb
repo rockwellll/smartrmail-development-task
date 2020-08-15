@@ -5,16 +5,24 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
     @event = events(:one)
   end
 
-  test "should get index" do
+  test 'should get index' do
     get events_url
     assert_response :success
   end
 
-  test "should create event" do
+  test 'should create event and return response of success' do
     assert_difference('Event.count') do
-      post events_url, params: { event: { begins_at: @event.begins_at, datetime: @event.datetime, ends_at: @event.ends_at, name: @event.name } }
+      post '/events.json', params: {
+        event: {
+          begins_at: @event.begins_at,
+          ends_at: @event.ends_at,
+          name: @event.name,
+          location: @event.location,
+          users: @event.location
+        }
+      }
     end
 
-    assert_redirected_to event_url(Event.last)
+    assert_response :created
   end
 end
