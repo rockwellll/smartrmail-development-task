@@ -1,23 +1,4 @@
 <div class="w-full flex flex-col justify-center">
-  <div class="calendar-heading flex w-3/12 justify-around items-center self-center">
-    <div class="p-2 text-sm">
-      <a href="<%= calendar.url_for_previous_view %>" class="link">
-        Previous week
-      </a>
-    </div>
-    <% if calendar.number_of_weeks == 1 %>
-      <span class="text-md self-center" style="color: #A690D1">Week <%= calendar.week_number %></span>
-    <%else%>
-        <span class="calendar-title">Week <%= calendar.week_number %> - <%= calendar.end_week %></span>
-    <%end%>
-
-    <div class="p-2 text-sm">
-      <a href="<%= calendar.url_for_previous_view %>" class="link">
-        Next week
-      </a>
-    </div>
-  </div>
-
   <table class="w-full text-center">
     <thead>
       <tr>
