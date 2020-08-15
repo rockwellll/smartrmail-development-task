@@ -31,6 +31,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'sqlite3', '~> 1.4'
+  gem 'rspec-rails', '~> 4.0.1'
 end
 
 group :development do
@@ -49,6 +50,7 @@ end
 
 group :production do
   gem 'pg', '1.2.3'
+
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
