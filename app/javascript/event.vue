@@ -34,18 +34,14 @@
             <p class="mt-2">{{event.description}}</p>
           </div>
 
-          <h2>People who are going</h2>
-          <div class="w-full flex mt-2">
+          <h2 v-if="event.users.length > 0">People who are going</h2>
+          <div class="w-full flex mt-2 attendances-container">
             <div
-              class="mx-2"
+              class="border-2 flex justify-center items-center p-2 hover:border-indigo-500"
               v-for="user in event.users"
-              style="width: 40px; height: 40px; border-radius: 20px"
+              style="width: 60px; height: 60px; border-radius: 30px; "
             >
-              <img
-                src="https://robohash.org/mohammed@foo.bar?set=set4&bgset=&size=400x400"
-                alt
-                :title="user"
-              />
+              <img :src="imageSourceFor(user)" alt :title="user" class="rounded-full self-center" />
             </div>
           </div>
         </div>
@@ -65,6 +61,19 @@ export default {
     hideModal() {
       this.$modal.hide(this.$props.index.toString().concat("event_modal"));
     },
+    imageSourceFor(user) {
+      return `https://robohash.org/${user}@foo.bar?set=set4&bgset=&size=400x400`;
+    },
   },
 };
 </script>
+
+<style scoped>
+.attendances-container div {
+  margin-left: -10px;
+}
+
+.attendances-container:first-child {
+  margin-left: 0px;
+}
+</style>
