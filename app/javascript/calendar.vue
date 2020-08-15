@@ -1,33 +1,58 @@
 <template>
-    <div>
-        <h1>you have {{events.length}} items</h1>
-      <slot></slot>
-    </div>
+  <div>
+    <slot></slot>
+
+    <table class="w-full text-center">
+      <thead>
+        <tr>
+          <th class="w-1/12" v-for="day in weekdays"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="event in allEvents" class="w-full">
+          <td v-for="(day, i) in weekdays" :key="i">
+            <div
+              v-if="event.wday === day && event.weekNumber.toString() === weekNumber.toString()"
+              class="flex justify-center items-center text-gray-600 flex-col my-3"
+              style="height: 100px;"
+            >
+              <event :key="event.id" :event="event"></event>
+            </div>
+          </td>
+        </tr>p
+      </tbody>
+    </table>
+  </div>
 </template>
 
 <script>
-    import { mapMutations, mapState } from "vuex";
+import { mapMutations, mapGetters } from "vuex";
 
-    export default {
-        name: "Calendar",
-        data: () =>({
-            weekdays: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-        }),
-        props: ['initial-events', "weeks"],
-        computed: {
-            ...mapState(['events'])
-        },
-        mounted: function() {
-            this.setEvents(
-                this.$props.initialEvents
-            );
-        },
-        methods: {
-            ...mapMutations(['setEvents'])
-        }
-    }
+export default {
+  name: "Calendar",
+  props: ["initial-events", "week-number"],
+  data: () => ({
+    weekdays: [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday",
+    ],
+  }),
+  computed: {
+    ...mapGetters(["allEvents"]),
+  },
+  created: function () {
+    this.setEvents(this.$props.initialEvents);
+  },
+  methods: {
+    ...mapMutations(["setEvents"]),
+  },
+};
 </script>
 
 <style scoped>
-
 </style>
