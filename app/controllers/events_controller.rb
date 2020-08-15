@@ -5,10 +5,10 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     @events = Event.all
-    @cweek = Date.current.cweek
+    @this_week = Date.current
 
-    unless (date = request.query_parameters["start_date"].nil?)
-      @cweek = date.to_datetime.cweek
+    unless (request.query_parameters["start_date"].nil?)
+      @this_week = request.query_parameters["start_date"].to_datetime
     end
   end
 
@@ -33,6 +33,6 @@ class EventsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def event_params
-    params.require(:event).permit(:name, :begins_at, :ends_at, :description)
+    params.require(:event).permit(:name, :begins_at, :ends_at, :description, :location,:users)
   end
 end
