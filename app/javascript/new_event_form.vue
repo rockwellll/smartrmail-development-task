@@ -32,7 +32,7 @@
               type="date"
               id="begins_at"
               name="begins_at"
-              value
+              :min="minDateForEvents"
               v-model="begins_at"
               class="p-2 rounded bg-gray-100 border focus:outline-none focus:bg-white focus:border-primary"
               placeholder="Event start date"
@@ -76,10 +76,11 @@
             <label class="my-2" for="peoples">Who is coming?</label>
             <div class="w-full flex">
               <input
+                v-bind:class="{'border-red-500': attendanceIsEmpty }"
                 id="peoples"
                 type="text"
                 name="location"
-                v-model="username"
+                v-model.trim="username"
                 class="p-2 w-10/12 rounded-tl-lg rounded-bl-lg bg-gray-100 focus:outline-none border focus:bg-white focus:border-primary"
                 placeholder="Username"
               />
@@ -96,7 +97,7 @@
                 class="p-2 mx-2 border rounded-lg justify-center items-center relative flex-wrap my-1"
               >
                 <span>{{user}}</span>
-                <button class="self-end" @click="() => removeFromAttendance(user)">
+                <button class="self-end" @click=" () => removeFromAttendance(user)">
                   <svg class="h-2 w-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                     <path
                       d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z"
@@ -126,6 +127,7 @@ import axios from "axios";
 
 export default {
   name: "NewEvent",
+  props: ["min-date-for-events"],
   data: () => ({
     name: "",
     description: "",
@@ -145,11 +147,25 @@ export default {
       "Sunday",
     ],
     attendances: [],
+    attendanceIsEmpty: false,
   }),
+  watch: {
+    begins_at(val) {
+      if (val > this.ends_at) {
+        this.ends_at = "";
+      }
+    },
+    username(val) {
+      if (val !== "") {
+        this.attendanceIsEmpty = false;
+      }
+    },
+  },
   methods: {
     ...mapMutations(["addEvent"]),
     add() {
       this.didSubmit = true;
+
       if (this.notValidInputs()) return;
 
       const event = {
@@ -166,10 +182,15 @@ export default {
           event,
         })
         .then(() => {
+          const begins_at = new Date(event.begins_at);
+          const ends_at = new Date(event.ends_at);
+
           this.addEvent({
             ...event,
             wday: this.weekdays[new Date(this.begins_at).getDay()],
             weekNumber: this.getWeekNumber(new Date(this.begins_at)),
+            begins_at: `${begins_at.getMonth() + 1}/${begins_at.getDate() + 1}`,
+            ends_at: `${ends_at.getMonth() + 1}/${ends_at.getDate() + 1}`,
           });
 
           this.hideModal();
@@ -216,6 +237,11 @@ export default {
 
     addAttendance(e) {
       e.preventDefault();
+      if (this.username === "") {
+        this.attendanceIsEmpty = true;
+        return;
+      }
+
       this.attendances = [this.username, ...this.attendances];
       this.username = "";
     },
