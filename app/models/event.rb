@@ -5,10 +5,13 @@ class Event < ApplicationRecord
 
   def with_formatted_dates
     {
+      wday: Date::DAYNAMES[begins_at.wday],
+      day: begins_at.day,
+      weekNumber: begins_at.to_datetime.cweek,
       name: name,
       description: description,
-      begins_at: "#{begins_at.month }/ #{begins_at.day}",
-      ends_at: "#{ends_at.month }/ #{ends_at.day}",
+      begins_at: "#{begins_at.month}/#{begins_at.day}",
+      ends_at: "#{ends_at.month}/#{ends_at.day}",
       id: id
     }
   end
