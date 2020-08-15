@@ -19,7 +19,7 @@
               <event :key="event.id" :event="event"></event>
             </div>
           </td>
-        </tr>p
+        </tr>
       </tbody>
     </table>
   </div>
