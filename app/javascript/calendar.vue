@@ -21,7 +21,7 @@
           </th>
         </tr>
       </thead>
-      <tbody class="mobile hidden md:table-row-group">
+      <tbody class="hidden md:table-row-group">
         <tr
           v-if="event.weekNumber === weekNumber"
           v-for="(event, index) in allEvents"
@@ -41,7 +41,7 @@
         </tr>
       </tbody>
 
-      <tbody class="block md:hidden">
+      <tbody class="mobile block md:hidden">
         <tr
           v-for="(events, day) in this.eventsWithinSameDay()"
           v-if="events.length !== 0"
