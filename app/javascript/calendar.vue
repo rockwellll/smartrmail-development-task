@@ -21,16 +21,39 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(event, index) in allEvents" class="w-full">
-          <td v-for="(day, i) in weekdays" :key="i">
+        <tr
+          v-for="(event, index) in allEvents"
+          class="w-full relative"
+          v-if="event.weekNumber === weekNumber"
+        >
+          <td
+            class="relative"
+            v-for="(day, i) in weekdays"
+            :key="i"
+            v-if="event.wday === day && event.weekNumber.toString() === weekNumber.toString()"
+          >
             <div
-              v-if="event.wday === day && event.weekNumber.toString() === weekNumber.toString()"
-              class="flex justify-center items-center text-gray-600 flex-col my-3"
-              style="height: 100px;"
+              class="flex justify-center items-center text-gray-600 flex-col my-3 relative"
+              style="height: 100px"
             >
-              <event :key="index" :event="event" :index="index"></event>
+              <div class="w-full">
+                <event :key="index" :event="event" :index="index"></event>
+              </div>
             </div>
           </td>
+
+          <td
+            class="relative"
+            v-else-if="i > weekdays.indexOf(event.wday) && (firstDayOfWeek+i) < endDateOf(event)"
+          >
+            <div
+              v-bind:style="{left: `-1${ i > 1 ?  7+i : i + 6}px`}"
+              style="height: 105px; top: 10px"
+              class="bg-primary absolute w-full pr-2"
+            ></div>
+          </td>
+
+          <td v-else></td>
         </tr>
       </tbody>
     </table>
@@ -76,9 +99,15 @@ export default {
 
       return `${number}${suffix}`;
     },
+    endDateOf(event) {
+      return parseInt(event.ends_at.split("/")[1]);
+    },
   },
 };
 </script>
 
 <style scoped>
+td.after-date {
+  /*border-left: 1px solid #8382f5;*/
+}
 </style>
