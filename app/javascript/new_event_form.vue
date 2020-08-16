@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button @click="showModal" class="px-4 mr-3 py-3 rounded-lg bg-primary text-white">New Event!</button>
+    <button @click="showModal" class="px-4 mr-3 py-3 rounded-lg bg-primary text-white">New Event</button>
 
     <modal
       height="auto"
