@@ -1,14 +1,15 @@
 <template>
   <div>
-    <button @click="showModal" class="px-2 py-3 rounded-lg bg-primary text-white">New Event!</button>
+    <button @click="showModal" class="px-2 mr-3 py-3 rounded-lg bg-primary text-white">New Event!</button>
 
     <modal
       height="auto"
-      classes="rounded-lg border-primary p-2"
+      :adaptive="true"
+      classes="rounded-lg border-primary p-2 sm:w-1/12"
       :clickToClose="false"
       name="new_event_form_modal"
     >
-      <div class="py-2 px-5 flex flex-col">
+      <div class="py-2 px-1 md:px-5 flex flex-col">
         <close-icon-button v-on:click="hideModal" />
         <h1>Create New Product</h1>
 
@@ -81,14 +82,14 @@
                 type="text"
                 name="location"
                 v-model.trim="username"
-                class="p-2 w-10/12 rounded-tl-lg rounded-bl-lg bg-gray-100 focus:outline-none border focus:bg-white focus:border-primary"
+                class="p-2 w-8/12 md:w-10/12 rounded-tl-lg rounded-bl-lg bg-gray-100 focus:outline-none border focus:bg-white focus:border-primary"
                 placeholder="Username"
               />
 
               <button
                 @click="addAttendance"
                 type="button"
-                class="p-2 w-2/12 text-sm rounded-tr-lg rounded-br-lg border bg-primary text-white focus:outline-none focus:shadow"
+                class="p-2 w-4/12 md:w-2/12 text-xs md:text-sm rounded-tr-lg rounded-br-lg border bg-primary text-white focus:outline-none focus:shadow"
               >Add User</button>
             </div>
             <div class="flex mt-2 flex-wrap w-full">
