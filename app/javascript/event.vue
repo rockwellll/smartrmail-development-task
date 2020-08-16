@@ -1,5 +1,5 @@
 <template>
-  <div class="my-2 self-center w-2/3">
+  <div class="my-2 self-center w-full">
     <div
       class="rounded-lg p-4 self-center text-xs text-left text-white border border-primary bg-primary"
     >
