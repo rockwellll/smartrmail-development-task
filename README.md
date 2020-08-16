@@ -1,24 +1,27 @@
-# README
+# Outline 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+this project was made as a task for the [SmartrMail](https://www.smartrmail.com/) development team.
 
-Things you may want to cover:
+***
 
-* Ruby version
+## Installation
 
-* System dependencies
+first, **clone** this repo, 
 
-* Configuration
+```
+git clone 
+```
 
-* Database creation
+second, navigate to the root of the folde and run this command
+```ruby
+bundle install 
+```
 
-* Database initialization
+this will install all the project dependancies.
 
-* How to run the test suite
+finall you are ready to run the project, to run the project do
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```ruby
+rails db:migrate <- to migrate the database so CRUD operations work
+rails server 
+```
