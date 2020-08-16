@@ -135,6 +135,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.20.3, < 2.0)
     rake (13.0.1)
+    redis (3.3.5)
     regexp_parser (1.7.1)
     rspec-core (3.9.2)
       rspec-support (~> 3.9.3)
@@ -216,6 +217,7 @@ DEPENDENCIES
   pg (= 1.2.3)
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.1)
+  redis (~> 3.0)
   rspec-rails (~> 4.0.1)
   sass-rails (>= 6)
   selenium-webdriver
