@@ -11,7 +11,7 @@
     >
       <div class="py-2 px-1 md:px-5 flex flex-col">
         <close-icon-button v-on:click="hideModal" />
-        <h1>Create New Product</h1>
+        <h1>Create New Event</h1>
 
         <form>
           <div class="flex flex-col">
