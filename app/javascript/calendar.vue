@@ -12,22 +12,51 @@
             v-for="(day, index) in weekdays"
             style="border-color: #D7D6F1"
           >
-            <h1 class="color-primary">{{day}}</h1>
-            <div class="flex-1 flex flex-row color-tertiary justify-center font-light">
-              <h1>{{ordinalize(firstDayOfWeek+index)}}</h1>
-              <h2 class="mx-2">{{month}}</h2>
-            </div>
+            <table-header
+              :day="day"
+              :first-day-of-week="firstDayOfWeek"
+              :index="index"
+              :month="month"
+            />
           </th>
         </tr>
       </thead>
-      <tbody>
-        <tr v-for="(event, index) in allEvents" class="w-full">
-          <td v-for="(day, i) in weekdays" :key="i">
+      <tbody class="hidden md:table-row-group">
+        <tr
+          v-if="event.weekNumber === weekNumber"
+          v-for="(event, index) in allEvents"
+          class="w-full"
+        >
+          <td :data-label="day" v-for="(day, i) in weekdays" :key="i">
             <div
               v-if="event.wday === day && event.weekNumber.toString() === weekNumber.toString()"
-              class="flex justify-center items-center text-gray-600 flex-col my-3"
-              style="height: 100px;"
+              class="flex justi fy-center items-center text-gray-600 flex-col my-3"
             >
+              <div class="block md:hidden mt-5">
+                <table-header :day="day" :first-day-of-week="firstDayOfWeek" :index="i" />
+              </div>
+              <event :key="index" :event="event" :index="index"></event>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+
+      <tbody class="block md:hidden">
+        <tr
+          v-for="(events, day) in this.eventsWithinSameDay()"
+          v-if="events.length !== 0"
+          class="block"
+        >
+          <div class="block mt-5">
+            <table-header
+              :day="day"
+              :first-day-of-week="firstDayOfWeek"
+              :index="weekdays.indexOf(day)"
+              :month="month"
+            />
+          </div>
+          <td class="block" v-for="(event, index) in events">
+            <div class="flex justify-center items-center text-gray-600 flex-col my-3">
               <event :key="index" :event="event" :index="index"></event>
             </div>
           </td>
@@ -62,23 +91,40 @@ export default {
   },
   methods: {
     ...mapMutations(["setEvents"]),
-    ordinalize(dayNumber) {
-      let suffix = "th";
-      const number = dayNumber.toString();
+    eventsWithinSameDay() {
+      const result = {
+        Monday: "",
+        Tuesday: "",
+        Wednesday: "",
+        Thursday: "",
+        Friday: "",
+        Saturday: "",
+        Sunday: "",
+      };
 
-      if (number.endsWith("1")) {
-        suffix = "st";
-      } else if (number.endsWith("2")) {
-        suffix = "nd";
-      } else if (number.endsWith("3")) {
-        suffix = "rd";
-      }
+      Object.keys({ ...result }).map((key) => {
+        result[key] = this.allEvents.filter(
+          (event) => event.wday === key && event.weekNumber === this.weekNumber
+        );
+      });
 
-      return `${number}${suffix}`;
+      return result;
     },
   },
 };
 </script>
 
 <style scoped>
+@media only screen and (max-width: 760px) {
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  tr,
+  td {
+    display: block;
+  }
+}
 </style>
