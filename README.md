@@ -9,7 +9,7 @@ this project was made as a task for the [SmartrMail](https://www.smartrmail.com/
 first, **clone** this repo, 
 
 ```
-git clone 
+git clone https://github.com/A7madXatab/smartrmail-development-task
 ```
 
 second, navigate to the root of the folde and run this command
