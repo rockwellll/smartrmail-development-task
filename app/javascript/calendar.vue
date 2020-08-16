@@ -35,7 +35,7 @@
               <div class="block md:hidden mt-5">
                 <table-header :day="day" :first-day-of-week="firstDayOfWeek" :index="i" />
               </div>
-              <event :key="index" :event="event" :index="index"></event>
+              <event :key="event.id" :event="event"></event>
             </div>
           </td>
         </tr>
@@ -57,7 +57,7 @@
           </div>
           <td class="block" v-for="(event, index) in events">
             <div class="flex justify-center items-center text-gray-600 flex-col my-3">
-              <event :key="index" :event="event" :index="index"></event>
+              <event :key="event.id" :event="event"></event>
             </div>
           </td>
         </tr>

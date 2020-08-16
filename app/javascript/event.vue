@@ -17,7 +17,7 @@
       style="min-height: 200px"
       classes="p-5 relative rounded-lg"
       height="auto"
-      :name="index.toString().concat('event_modal')"
+      :name="event.id.toString().concat('event_modal')"
     >
       <div class="flex flex-col h-full">
         <close-icon-button v-on:click="hideModal" class="absolute top-0" />
@@ -53,13 +53,13 @@
 <script>
 export default {
   name: "EventView",
-  props: ["event", "index"],
+  props: ["event"],
   methods: {
     showModal() {
-      this.$modal.show(this.$props.index.toString().concat("event_modal"));
+      this.$modal.show(this.$props.event.id.toString().concat("event_modal"));
     },
     hideModal() {
-      this.$modal.hide(this.$props.index.toString().concat("event_modal"));
+      this.$modal.hide(this.$props.event.id.toString().concat("event_modal"));
     },
     imageSourceFor(user) {
       return `https://robohash.org/${user}@foo.bar?set=set4&bgset=&size=400x400`;
