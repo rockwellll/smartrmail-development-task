@@ -21,7 +21,7 @@
           </th>
         </tr>
       </thead>
-      <tbody class="hidden md:table-row-group">
+      <tbody class="mobile hidden md:table-row-group">
         <tr
           v-if="event.weekNumber === weekNumber"
           v-for="(event, index) in allEvents"
@@ -122,7 +122,7 @@ export default {
     left: -9999px;
   }
 
-  tr,
+  tbody.mobile tr,
   td {
     display: block;
   }
