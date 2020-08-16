@@ -12,16 +12,16 @@ first, **clone** this repo,
 git clone https://github.com/A7madXatab/smartrmail-development-task
 ```
 
-second, navigate to the root of the folde and run this command
+second, navigate to the root of the project and run this command
 ```ruby
 bundle install 
 ```
 
-this will install all the project dependancies.
+this will install all the project dependencies.
 
 finall you are ready to run the project, to run the project do
 
 ```ruby
-rails db:migrate <- to migrate the database so CRUD operations work
+rails db:migrate
 rails server 
 ```
