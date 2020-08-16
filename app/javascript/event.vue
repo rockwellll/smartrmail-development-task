@@ -73,5 +73,4 @@ export default {
 .attendances-container div:not(:first-child) {
   margin-left: -10px;
 }
-
 </style>
