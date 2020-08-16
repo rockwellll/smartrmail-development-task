@@ -182,17 +182,6 @@ export default {
           event,
         })
         .then(() => {
-          const begins_at = new Date(event.begins_at);
-          const ends_at = new Date(event.ends_at);
-
-          this.addEvent({
-            ...event,
-            wday: this.weekdays[new Date(this.begins_at).getDay()],
-            weekNumber: this.getWeekNumber(new Date(this.begins_at)),
-            begins_at: `${begins_at.getMonth() + 1}/${begins_at.getDate() + 1}`,
-            ends_at: `${ends_at.getMonth() + 1}/${ends_at.getDate() + 1}`,
-          });
-
           this.hideModal();
           this.resetInputs();
         })
