@@ -17,6 +17,7 @@
       style="min-height: 200px"
       classes="p-5 relative rounded-lg"
       height="auto"
+      :adaptive="true"
       :name="event.id.toString().concat('event_modal')"
     >
       <div class="flex flex-col h-full">
