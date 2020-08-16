@@ -5,7 +5,7 @@
     >There are {{allEvents.length}} events</h1>
 
     <table class="w-full text-center">
-      <thead>
+      <thead class="hidden lg:block">
         <tr>
           <th
             class="py-1 border w-1/12"
@@ -21,27 +21,7 @@
           </th>
         </tr>
       </thead>
-      <tbody class="hidden md:table-row-group">
-        <tr
-          v-if="event.weekNumber === weekNumber"
-          v-for="(event, index) in allEvents"
-          class="w-full"
-        >
-          <td :data-label="day" v-for="(day, i) in weekdays" :key="i">
-            <div
-              v-if="event.wday === day && event.weekNumber.toString() === weekNumber.toString()"
-              class="flex justi fy-center items-center text-gray-600 flex-col my-3"
-            >
-              <div class="block md:hidden mt-5">
-                <table-header :day="day" :first-day-of-week="firstDayOfWeek" :index="i" />
-              </div>
-              <event :key="event.id" :event="event"></event>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-
-      <tbody class="mobile block md:hidden">
+      <tbody>
         <tr
           v-for="(events, day) in this.eventsWithinSameDay()"
           v-if="events.length !== 0"
@@ -117,14 +97,7 @@ export default {
 <style scoped>
 @media only screen and (max-width: 760px) {
   thead tr {
-    position: absolute;
-    top: -9999px;
-    left: -9999px;
-  }
-
-  tbody.mobile tr,
-  td {
-    display: block;
+    display: none;
   }
 }
 </style>
