@@ -19,6 +19,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
+        ActionCable.server.broadcast 'events_channel', event: @event.with_formatted_dates
         format.html { redirect_to events_path, notice: 'Event was successfully created.' }
         format.json { render :index, status: :created, location: @event}
       else
