@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="text-center">
       <h1 class="color-primary">{{day}}</h1>
       <div class="flex-1 flex flex-row color-tertiary justify-center font-light">
           <h1>{{ordinalize(firstDayOfWeek+index)}}</h1>

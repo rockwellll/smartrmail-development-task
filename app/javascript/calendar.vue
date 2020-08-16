@@ -5,8 +5,8 @@
     >There are {{allEvents.length}} events</h1>
 
     <table class="w-full text-center">
-      <thead>
-        <tr>
+      <thead class="hidden md:table-header-group">
+        <tr class="w-full">
           <th
             class="py-1 border w-1/12"
             v-for="(day, index) in weekdays"
@@ -43,27 +43,26 @@
     </table>
 
     <table>
-
       <tbody class="mobile block md:hidden">
-      <tr
-              v-for="(events, day) in this.eventsWithinSameDay()"
-              v-if="events.length !== 0"
-              class="block"
-      >
-        <div class="block mt-5">
-          <table-header
-                  :day="day"
-                  :first-day-of-week="firstDayOfWeek"
-                  :index="weekdays.indexOf(day)"
-                  :month="month"
-          />
-        </div>
-        <td class="block" v-for="(event, index) in events">
-          <div class="flex justify-center items-center text-gray-600 flex-col my-3">
-            <event :key="event.id" :event="event"></event>
+        <tr
+          v-for="(events, day) in this.eventsWithinSameDay()"
+          v-if="events.length !== 0"
+          class="block"
+        >
+          <div class="block mt-5">
+            <table-header
+              :day="day"
+              :first-day-of-week="firstDayOfWeek"
+              :index="weekdays.indexOf(day)"
+              :month="month"
+            />
           </div>
-        </td>
-      </tr>
+          <td class="block" v-for="(event, index) in events">
+            <div class="flex justify-center items-center text-gray-600 flex-col my-3">
+              <event :key="event.id" :event="event"></event>
+            </div>
+          </td>
+        </tr>
       </tbody>
     </table>
   </div>
