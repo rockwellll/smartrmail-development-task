@@ -16,7 +16,7 @@
               :day="day"
               :first-day-of-week="firstDayOfWeek"
               :index="index"
-              :month="month"
+              :month="(index + firstDayOfWeek) > 31 ? nextMonth : month"
             />
           </th>
         </tr>
@@ -73,7 +73,7 @@ import { mapMutations, mapGetters } from "vuex";
 
 export default {
   name: "Calendar",
-  props: ["initial-events", "week-number", "first-day-of-week", "month"],
+  props: ["initial-events", "week-number", "first-day-of-week", "month", "next-month"],
   data: () => ({
     weekdays: [
       "Monday",

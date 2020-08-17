@@ -9,6 +9,7 @@
 
   <calendar
     :month="<%= Date::MONTHNAMES[@this_week.month].to_json %>"
+    :next-month = "<%= Date::MONTHNAMES[@this_week.month+1].to_json %>"
     :first-day-of-week="<%= @this_week.day.to_json %>"
     :week-number="<%= @this_week.cweek %>"
     :initial-events="<%= @events.map { |event| event.with_formatted_dates }.to_json %>">

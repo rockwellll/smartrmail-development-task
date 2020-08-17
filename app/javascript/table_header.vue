@@ -2,7 +2,7 @@
   <div class="text-center">
     <h1 class="color-primary">{{day}}</h1>
     <div class="flex-1 flex flex-row color-tertiary justify-center font-light">
-      <h1>{{ordinalize(firstDayOfWeek+index)}}</h1>
+      <h1>{{ordinalize(firstDayOfWeek, index)}}</h1>
       <h2 class="mx-2">{{month}}</h2>
     </div>
   </div>
@@ -12,9 +12,13 @@
 export default {
   props: ["day", "firstDayOfWeek", "index", "month"],
   methods: {
-    ordinalize(dayNumber) {
+    ordinalize(firstDayOfWeek, dayIndex) {
+      if((firstDayOfWeek + dayIndex )> 31)
+        return dayIndex;
+
       let suffix = "th";
-      const number = dayNumber.toString();
+
+      const dayNumber = firstDayOfWeek + dayIndex;
 
       const daysWithOne = [1, 21, 31];
       const daysWithTwo = [2, 22];
@@ -29,7 +33,7 @@ export default {
         suffix = "rd";
       }
 
-      return `${number}${suffix}`;
+      return `${dayNumber}${suffix}`;
     },
   },
 };
