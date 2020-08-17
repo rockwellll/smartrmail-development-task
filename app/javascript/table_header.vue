@@ -19,7 +19,6 @@ export default {
       const daysWithOne = [1, 21, 31];
       const daysWithTwo = [2, 22];
 
-      console.log(daysWithOne.indexOf(dayNumber));
       const daysWitThree = [3, 23];
 
       if (daysWithOne.indexOf(dayNumber) > -1) {
