@@ -13,12 +13,13 @@ export default {
   props: ["day", "firstDayOfWeek", "index", "month"],
   methods: {
     ordinalize(firstDayOfWeek, dayIndex) {
+      let dayNumber = firstDayOfWeek + dayIndex;
+
+
       if((firstDayOfWeek + dayIndex )> 31)
-        return dayIndex;
+        dayNumber = dayIndex;
 
       let suffix = "th";
-
-      const dayNumber = firstDayOfWeek + dayIndex;
 
       const daysWithOne = [1, 21, 31];
       const daysWithTwo = [2, 22];
