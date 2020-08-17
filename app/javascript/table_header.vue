@@ -16,11 +16,17 @@ export default {
       let suffix = "th";
       const number = dayNumber.toString();
 
-      if (number.endsWith("1")) {
+      const daysWithOne = [1, 21, 31];
+      const daysWithTwo = [2, 22];
+
+      console.log(daysWithOne.indexOf(dayNumber));
+      const daysWitThree = [3, 23];
+
+      if (daysWithOne.indexOf(dayNumber) > -1) {
         suffix = "st";
-      } else if (number.endsWith("2")) {
+      } else if (daysWithTwo.indexOf(dayNumber) > -1) {
         suffix = "nd";
-      } else if (number.endsWith("3")) {
+      } else if (daysWitThree.indexOf(dayNumber) > -1) {
         suffix = "rd";
       }
 
